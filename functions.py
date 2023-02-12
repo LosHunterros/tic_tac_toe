@@ -6,3 +6,14 @@ def clear():
         _ = system('cls')
     else:
         _ = system('clear')
+
+def string_fill(string_original, lenght, align="center"):
+    if len(string_original) > lenght:
+        string_original = string_original[0:lenght]
+    
+    if align == "left":
+        return string_original + ( lenght - len(string_original) ) * " "
+    elif align == "right":
+        return ( lenght - len(string_original) ) * " " + string_original
+    else:
+        return ( ( lenght - len(string_original) ) // 2 ) * " " + string_original + ( lenght - ( ( lenght - len(string_original) ) // 2 ) - len(string_original) ) * " "
