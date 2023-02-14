@@ -344,7 +344,7 @@ def tic_tac_toe_animations(text_lines = {}, game_progress = False, animations_se
     animation_frames["text_title"] = []
     i = 0
     while i < 37:
-        animation_frames["text_title"].append([[2,10+i],[3,10+i],[4,10+i],[5,10+i]])
+        animation_frames["text_title"].append([[2,9+i],[3,9+i],[4,9+i],[5,9+i]])
         i += 1
 
     # Localization of text_lines chars in animation order
