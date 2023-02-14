@@ -1,7 +1,7 @@
 import time
 from random import randint
 
-from functions import *
+import functions
 
 def tic_tac_toe_animations(text_lines = {}, game_progress = False, animations_settings = False):
     '''
@@ -27,9 +27,9 @@ def tic_tac_toe_animations(text_lines = {}, game_progress = False, animations_se
 
     2 dimensions list with actual values of game fields, eg.:
     game_progress = [
-        [ ["o"], ["o"], ["o"] ],
-        [ ["x"], ["x"], ["x"] ],
-        [ [False], [False], [False] ]
+        [ "o", "o", "o" ],
+        [ "x", "x", "x" ],
+        [ False, False, False ]
     ]
     or False to empty or "random" to display all fields in random state
 
@@ -84,7 +84,7 @@ def tic_tac_toe_animations(text_lines = {}, game_progress = False, animations_se
                 game_progress[i][j] = False
             j += 1
         i += 1
-
+    
     # Validating argument animations_settings
     if not isinstance(animations_settings, dict):
         animations = {
@@ -184,26 +184,26 @@ def tic_tac_toe_animations(text_lines = {}, game_progress = False, animations_se
     graphic_begin = [
         "▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄",
         "█                                                                                               █",
-        "█         ▀█▀ █ ▐█▀   ▀█▀  █  ▐█▀   ▀█▀  █  █▀▀                1           2           3        █",
-        "█          █  █ █      █  ▐ ▌ █      █  █ █ █                        ╥           ╥              █",
-        "█          █  █ █      █  █▄█ █      █  █ █ █▀              "+graphic_sign[game_progress[0][0]][0]+"  ║  "+graphic_sign[game_progress[0][1]][0]+"  ║  "+graphic_sign[game_progress[0][2]][0]+"     █",
-        "█          █  █ ▐█▄    █  █ █ ▐█▄    █   █  █▄▄             "+graphic_sign[game_progress[0][0]][1]+"  ║  "+graphic_sign[game_progress[0][1]][1]+"  ║  "+graphic_sign[game_progress[0][2]][1]+"     █",
+        "█        ▀█▀ █ ▐█▀   ▀█▀  █  ▐█▀   ▀█▀  █  █▀▀                 1           2           3        █",
+        "█         █  █ █      █  ▐ ▌ █      █  █ █ █                         ╥           ╥              █",
+        "█         █  █ █      █  █▄█ █      █  █ █ █▀               "+graphic_sign[game_progress[0][0]][0]+"  ║  "+graphic_sign[game_progress[0][1]][0]+"  ║  "+graphic_sign[game_progress[0][2]][0]+"     █",
+        "█         █  █ ▐█▄    █  █ █ ▐█▄    █   █  █▄▄              "+graphic_sign[game_progress[0][0]][1]+"  ║  "+graphic_sign[game_progress[0][1]][1]+"  ║  "+graphic_sign[game_progress[0][2]][1]+"     █",
         "█                                                      A    "+graphic_sign[game_progress[0][0]][2]+"  ║  "+graphic_sign[game_progress[0][1]][2]+"  ║  "+graphic_sign[game_progress[0][2]][2]+"     █",
-        "█ "+string_fill(text_lines[0], 52)+"      "+graphic_sign[game_progress[0][0]][3]+"  ║  "+graphic_sign[game_progress[0][1]][3]+"  ║  "+graphic_sign[game_progress[0][2]][3]+"     █",
-        "█ "+string_fill(text_lines[1], 52)+"      "+graphic_sign[game_progress[0][0]][4]+"  ║  "+graphic_sign[game_progress[0][1]][4]+"  ║  "+graphic_sign[game_progress[0][2]][4]+"     █",
-        "█ "+string_fill(text_lines[2], 52)+"   ╞═══════════╬═══════════╬═══════════╡  █",
-        "█ "+string_fill(text_lines[3], 52)+"      "+graphic_sign[game_progress[1][0]][0]+"  ║  "+graphic_sign[game_progress[1][1]][0]+"  ║  "+graphic_sign[game_progress[1][2]][0]+"     █",
-        "█ "+string_fill(text_lines[4], 52)+"      "+graphic_sign[game_progress[1][0]][1]+"  ║  "+graphic_sign[game_progress[1][1]][1]+"  ║  "+graphic_sign[game_progress[1][2]][1]+"     █",
-        "█ "+string_fill(text_lines[5], 52)+" B    "+graphic_sign[game_progress[1][0]][2]+"  ║  "+graphic_sign[game_progress[1][1]][2]+"  ║  "+graphic_sign[game_progress[1][2]][2]+"     █",
-        "█ "+string_fill(text_lines[6], 52)+"      "+graphic_sign[game_progress[1][0]][3]+"  ║  "+graphic_sign[game_progress[1][1]][3]+"  ║  "+graphic_sign[game_progress[1][2]][3]+"     █",
-        "█ "+string_fill(text_lines[7], 52)+"      "+graphic_sign[game_progress[1][0]][4]+"  ║  "+graphic_sign[game_progress[1][1]][4]+"  ║  "+graphic_sign[game_progress[1][2]][4]+"     █",
-        "█ "+string_fill(text_lines[8], 52)+"   ╞═══════════╬═══════════╬═══════════╡  █",
-        "█ "+string_fill(text_lines[9], 52)+"      "+graphic_sign[game_progress[2][0]][0]+"  ║  "+graphic_sign[game_progress[2][1]][0]+"  ║  "+graphic_sign[game_progress[2][2]][0]+"     █",
-        "█ "+string_fill(text_lines[10], 52)+"      "+graphic_sign[game_progress[2][0]][1]+"  ║  "+graphic_sign[game_progress[2][1]][1]+"  ║  "+graphic_sign[game_progress[2][2]][1]+"     █",
-        "█ "+string_fill(text_lines[11], 52)+" C    "+graphic_sign[game_progress[2][0]][2]+"  ║  "+graphic_sign[game_progress[2][1]][2]+"  ║  "+graphic_sign[game_progress[2][2]][2]+"     █",
-        "█ "+string_fill(text_lines[12], 52)+"      "+graphic_sign[game_progress[2][0]][3]+"  ║  "+graphic_sign[game_progress[2][1]][3]+"  ║  "+graphic_sign[game_progress[2][2]][3]+"     █",
+        "█ "+functions.string_fill(text_lines[0], 52)+"      "+graphic_sign[game_progress[0][0]][3]+"  ║  "+graphic_sign[game_progress[0][1]][3]+"  ║  "+graphic_sign[game_progress[0][2]][3]+"     █",
+        "█ "+functions.string_fill(text_lines[1], 52)+"      "+graphic_sign[game_progress[0][0]][4]+"  ║  "+graphic_sign[game_progress[0][1]][4]+"  ║  "+graphic_sign[game_progress[0][2]][4]+"     █",
+        "█ "+functions.string_fill(text_lines[2], 52)+"   ╞═══════════╬═══════════╬═══════════╡  █",
+        "█ "+functions.string_fill(text_lines[3], 52)+"      "+graphic_sign[game_progress[1][0]][0]+"  ║  "+graphic_sign[game_progress[1][1]][0]+"  ║  "+graphic_sign[game_progress[1][2]][0]+"     █",
+        "█ "+functions.string_fill(text_lines[4], 52)+"      "+graphic_sign[game_progress[1][0]][1]+"  ║  "+graphic_sign[game_progress[1][1]][1]+"  ║  "+graphic_sign[game_progress[1][2]][1]+"     █",
+        "█ "+functions.string_fill(text_lines[5], 52)+" B    "+graphic_sign[game_progress[1][0]][2]+"  ║  "+graphic_sign[game_progress[1][1]][2]+"  ║  "+graphic_sign[game_progress[1][2]][2]+"     █",
+        "█ "+functions.string_fill(text_lines[6], 52)+"      "+graphic_sign[game_progress[1][0]][3]+"  ║  "+graphic_sign[game_progress[1][1]][3]+"  ║  "+graphic_sign[game_progress[1][2]][3]+"     █",
+        "█ "+functions.string_fill(text_lines[7], 52)+"      "+graphic_sign[game_progress[1][0]][4]+"  ║  "+graphic_sign[game_progress[1][1]][4]+"  ║  "+graphic_sign[game_progress[1][2]][4]+"     █",
+        "█ "+functions.string_fill(text_lines[8], 52)+"   ╞═══════════╬═══════════╬═══════════╡  █",
+        "█ "+functions.string_fill(text_lines[9], 52)+"      "+graphic_sign[game_progress[2][0]][0]+"  ║  "+graphic_sign[game_progress[2][1]][0]+"  ║  "+graphic_sign[game_progress[2][2]][0]+"     █",
+        "█ "+functions.string_fill(text_lines[10], 52)+"      "+graphic_sign[game_progress[2][0]][1]+"  ║  "+graphic_sign[game_progress[2][1]][1]+"  ║  "+graphic_sign[game_progress[2][2]][1]+"     █",
+        "█ "+functions.string_fill(text_lines[11], 52)+" C    "+graphic_sign[game_progress[2][0]][2]+"  ║  "+graphic_sign[game_progress[2][1]][2]+"  ║  "+graphic_sign[game_progress[2][2]][2]+"     █",
+        "█ "+functions.string_fill(text_lines[12], 52)+"      "+graphic_sign[game_progress[2][0]][3]+"  ║  "+graphic_sign[game_progress[2][1]][3]+"  ║  "+graphic_sign[game_progress[2][2]][3]+"     █",
         "█                                                           "+graphic_sign[game_progress[2][0]][4]+"  ║  "+graphic_sign[game_progress[2][1]][4]+"  ║  "+graphic_sign[game_progress[2][2]][4]+"     █",
-        "█ "+string_fill("Wpisz 'Quit' aby zakończyć grę", 52)+"               ╨           ╨              █",
+        "█ "+functions.string_fill("Wpisz 'Quit' aby zakończyć grę", 52)+"               ╨           ╨              █",
         "█                                                                                               █",
         "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀"
     ]
@@ -486,12 +486,12 @@ def tic_tac_toe_animations(text_lines = {}, game_progress = False, animations_se
             for frame_pixel in frame:
                 graphic_final[frame_pixel[0]][frame_pixel[1]] = graphic_begin[frame_pixel[0]][frame_pixel[1]]
 
-    clear()
+    functions.clear()
 
     # Executing animations 
 
     for frame in animation:
-        clear()
+        functions.clear()
         for frame_pixel in frame:
             graphic_final[frame_pixel[0]][frame_pixel[1]] = graphic_begin[frame_pixel[0]][frame_pixel[1]]
         print("\n".join(map(lambda x: ("").join(x), graphic_final)))
@@ -499,5 +499,5 @@ def tic_tac_toe_animations(text_lines = {}, game_progress = False, animations_se
 
     # Print whole 
 
-    clear()
+    functions.clear()
     print("\n".join(map(lambda x: ("").join(x), graphic_begin)))
