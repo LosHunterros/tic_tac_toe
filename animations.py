@@ -369,7 +369,7 @@ def tic_tac_toe_animations(text_lines = {}, game_progress = False, animations_se
         animation_frames["text_footer"].append([[21,13+i]])
         i += 1
 
-    # Adding frames to animation on instantly to game visualization depending of animation settings
+    # Adding frames to animation or instantly to game visualization depending of animation settings
 
     animation = []
 

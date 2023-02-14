@@ -4,9 +4,6 @@ from random import randint
 from functions import *
 from animations import *
 
-def fill_space(n,string_1,string_2):
-    return ((n - len(string_1)) - len(string_2))*" "
-
 def tic_tac_toe_menu(player_1_settings = 1, player_2_settings = 1):
 
     operation=0
