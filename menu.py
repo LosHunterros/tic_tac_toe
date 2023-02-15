@@ -8,8 +8,8 @@ def tic_tac_toe_menu(player_1_settings = 1, player_2_settings = 1):
 
     operation=0
 
-    player_1_name = "Player 'O'"
-    player_2_name = "Player 'X'"
+    player_1_name = "Player 'X'"
+    player_2_name = "Player 'O'"
 
     text_lines = {
         0: "",

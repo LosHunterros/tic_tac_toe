@@ -23,8 +23,7 @@ def tic_tac_toe_move_check_availability(move = False, game_progress = False):
     
 def tic_tac_toe_move_check_result(game_progress = False):
     try:
-        if False not in game_progress[0] and False not in game_progress[1] and False not in game_progress[2]: return "draw"
-        elif game_progress[0][0] == game_progress[0][1] == game_progress[0][2] and game_progress[0][0] != False:
+        if game_progress[0][0] == game_progress[0][1] == game_progress[0][2] and game_progress[0][0] != False:
             return ["a1", "a2", "a3"]
         elif game_progress[1][0] == game_progress[1][1] == game_progress[1][2] and game_progress[1][0] != False:
             return ["b1", "b2", "b3"]
@@ -40,6 +39,7 @@ def tic_tac_toe_move_check_result(game_progress = False):
             return ["a1", "b2", "c3"]
         elif game_progress[0][2] == game_progress[1][1] == game_progress[2][0] and game_progress[0][2] != False:
             return ["a3", "b2", "c1"]
+        elif False not in game_progress[0] and False not in game_progress[1] and False not in game_progress[2]: return "draw"
         else: return False
     except:
         return False

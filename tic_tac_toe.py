@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 from functions import *
 from menu import *
 from animations import *
@@ -23,8 +25,8 @@ while True:
     settings = tic_tac_toe_menu(1, 1)
 
     player = {
-        1: {"type": settings[0], "name": settings[2], "sign": "o"},
-        2: {"type": settings[1], "name": settings[3], "sign": "x"}
+        1: {"type": settings[0], "name": settings[2], "sign": "x"},
+        2: {"type": settings[1], "name": settings[3], "sign": "o"}
     }
     player_active = 1
 
@@ -254,6 +256,8 @@ while True:
         result = tic_tac_toe_move_check_result(game_progress)
 
         if result == "draw":
+            time.sleep(1)
+
             text_lines = {
                 0: "",
                 1: "",
@@ -283,16 +287,22 @@ while True:
             time.sleep(2)
 
         elif isinstance(result, list):
+            result_numbers = map(lambda x: x.replace("a", "1").replace("b", "2").replace("c", "3") , result)
+            game_progress_reduced = deepcopy(game_progress)
+            for number in result_numbers: game_progress_reduced[int(number[0])-1][int(number[1])-1] = False
+
+            time.sleep(0.5)
+
             animations_settings = {
                 "border": False,
                 "lines": False,
-                "game_progress": result,
+                "game_progress": False,
                 "coordinates": False,
                 "text_title": False,
                 "text_lines": False,
                 "text_footer": False
             }
-            tic_tac_toe_animations(text_lines, game_progress, animations_settings)
+            tic_tac_toe_animations(text_lines, game_progress_reduced, animations_settings)
 
             time.sleep(0.5)
 
@@ -300,9 +310,21 @@ while True:
 
             time.sleep(0.5)
 
+            tic_tac_toe_animations(text_lines, game_progress_reduced, animations_settings)
+
+            time.sleep(0.5)
+
             tic_tac_toe_animations(text_lines, game_progress, animations_settings)
 
             time.sleep(0.5)
+
+            tic_tac_toe_animations(text_lines, game_progress_reduced, animations_settings)
+
+            time.sleep(0.5)
+
+            tic_tac_toe_animations(text_lines, game_progress, animations_settings)
+
+            time.sleep(1)
 
             text_lines = {
                 0: "",
