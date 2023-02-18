@@ -50,6 +50,8 @@ def tic_tac_toe_menu(player_1_settings = 1, player_2_settings = 1):
             player_1_settings_description = "Człowiek"
         elif player_1_settings == 2:
             player_1_settings_description = "SI poziom łatwy"
+        elif player_1_settings == 3:
+            player_1_settings_description = "SI poziom średni"
         else:
             player_1_settings_description = "SI poziom trudny"
         
@@ -57,6 +59,8 @@ def tic_tac_toe_menu(player_1_settings = 1, player_2_settings = 1):
             player_2_settings_description = "Człowiek"
         elif player_2_settings == 2:
             player_2_settings_description = "SI poziom łatwy"
+        elif player_2_settings == 3:
+            player_2_settings_description = "SI poziom średni"
         else:
             player_2_settings_description = "SI poziom trudny"
 
@@ -163,11 +167,11 @@ def tic_tac_toe_menu(player_1_settings = 1, player_2_settings = 1):
                         3: "",
                         4: "1. Człowiek",
                         5: "2. AI poziom łatwy",
-                        6: "3. AI poziom trudny",
-                        7: "",
+                        6: "3. AI poziom średni",
+                        7: "4. AI poziom trudny",
                         8: "",
-                        9: "Wybierz opcję z menu",
-                        10: "",
+                        9: "",
+                        10: "Wybierz opcję z menu",
                         11: "",
                         12: ""
                     }
@@ -256,11 +260,11 @@ def tic_tac_toe_menu(player_1_settings = 1, player_2_settings = 1):
                         3: "",
                         4: "1. Człowiek",
                         5: "2. AI poziom łatwy",
-                        6: "3. AI poziom trudny",
-                        7: "",
+                        6: "3. AI poziom średni",
+                        7: "4. AI poziom trudny",
                         8: "",
-                        9: "Wybierz opcję z menu",
-                        10: "",
+                        9: "",
+                        10: "Wybierz opcję z menu",
                         11: "",
                         12: ""
                     }
