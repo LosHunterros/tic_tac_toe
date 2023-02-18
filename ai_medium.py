@@ -1,5 +1,6 @@
 import copy as cp
 
+
 class Cell:
     def __init__(self, location, max_val):
         self.location = location 
