@@ -1,5 +1,6 @@
 from ai_lite import get_random_ai_coordinates
 from ai_medium import get_unbeatable_ai_coordinates 
+from ai_hard import get_unbeatable_ai_coordinates_hard
 from copy import deepcopy
 
 from functions import *
@@ -134,8 +135,16 @@ while True:
             time.sleep(0.2)                
         elif settings[0]==3 and player_active==1:
             move=get_unbeatable_ai_coordinates(game_progress,'x')
+            time.sleep(0.2)  
         elif settings[1]==3 and player_active==2:
             move=get_unbeatable_ai_coordinates(game_progress,'o')
+            time.sleep(0.2)  
+        elif settings[0]==4 and player_active==1:
+            move=get_unbeatable_ai_coordinates_hard(game_progress,'x')
+            time.sleep(0.2)  
+        elif settings[1]==4 and player_active==2:
+            move=get_unbeatable_ai_coordinates_hard(game_progress,'o')
+            time.sleep(0.2)  
 
 
         while move == False:
@@ -183,22 +192,32 @@ while True:
                 11: "Podaj współrzędne do wstawienia znaku",
                 12: ""
             }
-            if settings[0]==1 and player_active==1:
-                move = input_with_quit("Podaj współrzędne do wstawienia znaku: ")
-                move = tic_tac_toe_move_check_syntax(move)                
-            elif settings[1]==1 and player_active==2:
-                move = input_with_quit("Podaj współrzędne do wstawienia znaku: ")
-                move = tic_tac_toe_move_check_syntax(move)                
-            elif settings[0]==2 and player_active==1:
-                move=get_random_ai_coordinates(game_progress)
-                time.sleep(0.2)
-            elif settings[1]==2 and player_active==2:
-                move=get_random_ai_coordinates(game_progress)
-                time.sleep(0.2)                
-            elif settings[0]==3 and player_active==1:
-                move=get_unbeatable_ai_coordinates(game_progress,'x')
-            elif settings[1]==3 and player_active==2:
-                move=get_unbeatable_ai_coordinates(game_progress,'o')
+
+        if settings[0]==1 and player_active==1:
+            move = input_with_quit("Podaj współrzędne do wstawienia znaku: ")
+            move = tic_tac_toe_move_check_syntax(move)                
+        elif settings[1]==1 and player_active==2:
+            move = input_with_quit("Podaj współrzędne do wstawienia znaku: ")
+            move = tic_tac_toe_move_check_syntax(move)                
+        elif settings[0]==2 and player_active==1:
+            move=get_random_ai_coordinates(game_progress)
+            time.sleep(0.2)
+        elif settings[1]==2 and player_active==2:
+            move=get_random_ai_coordinates(game_progress)
+            time.sleep(0.2)                
+        elif settings[0]==3 and player_active==1:
+            move=get_unbeatable_ai_coordinates(game_progress,'x')
+            time.sleep(0.2)  
+        elif settings[1]==3 and player_active==2:
+            move=get_unbeatable_ai_coordinates(game_progress,'o')
+            time.sleep(0.2)  
+        elif settings[0]==4 and player_active==1:
+            move=get_unbeatable_ai_coordinates_hard(game_progress,'x')
+            time.sleep(0.2)  
+        elif settings[1]==4 and player_active==2:
+            move=get_unbeatable_ai_coordinates_hard(game_progress,'o')
+            time.sleep(0.2)  
+
 
 
         move = tic_tac_toe_move_check_availability(move, game_progress)
@@ -250,22 +269,31 @@ while True:
             }
             tic_tac_toe_animations(text_lines, game_progress, animations_settings)
 
-            if settings[0]==1 and player_active==1:
-                move = input_with_quit("Podaj współrzędne do wstawienia znaku: ")
-                move = tic_tac_toe_move_check_syntax(move)                
-            elif settings[1]==1 and player_active==2:
-                move = input_with_quit("Podaj współrzędne do wstawienia znaku: ")
-                move = tic_tac_toe_move_check_syntax(move)                
-            elif settings[0]==2 and player_active==1:
-                move=get_random_ai_coordinates(game_progress)
-                time.sleep(0.2)
-            elif settings[1]==2 and player_active==2:
-                move=get_random_ai_coordinates(game_progress)
-                time.sleep(0.2)                
-            elif settings[0]==3 and player_active==1:
-                move=get_unbeatable_ai_coordinates(game_progress,'x')
-            elif settings[1]==3 and player_active==2:
-                move=get_unbeatable_ai_coordinates(game_progress,'o')
+        if settings[0]==1 and player_active==1:
+            move = input_with_quit("Podaj współrzędne do wstawienia znaku: ")
+            move = tic_tac_toe_move_check_syntax(move)                
+        elif settings[1]==1 and player_active==2:
+            move = input_with_quit("Podaj współrzędne do wstawienia znaku: ")
+            move = tic_tac_toe_move_check_syntax(move)                
+        elif settings[0]==2 and player_active==1:
+            move=get_random_ai_coordinates(game_progress)
+            time.sleep(0.2)
+        elif settings[1]==2 and player_active==2:
+            move=get_random_ai_coordinates(game_progress)
+            time.sleep(0.2)                
+        elif settings[0]==3 and player_active==1:
+            move=get_unbeatable_ai_coordinates(game_progress,'x')
+            time.sleep(0.2)  
+        elif settings[1]==3 and player_active==2:
+            move=get_unbeatable_ai_coordinates(game_progress,'o')
+            time.sleep(0.2)  
+        elif settings[0]==4 and player_active==1:
+            move=get_unbeatable_ai_coordinates_hard(game_progress,'x')
+            time.sleep(0.2)  
+        elif settings[1]==4 and player_active==2:
+            move=get_unbeatable_ai_coordinates_hard(game_progress,'o')
+            time.sleep(0.2)  
+
 
             move = tic_tac_toe_move_check_availability(move, game_progress)
 
