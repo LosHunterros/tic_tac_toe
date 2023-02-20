@@ -121,31 +121,17 @@ while True:
         }
         tic_tac_toe_animations(text_lines, game_progress, animations_settings)
 
-        if settings[0]==1 and player_active==1:
+        if player[player_active]["type"] == 1:
             move = input_with_quit("Podaj współrzędne do wstawienia znaku: ")
-            move = tic_tac_toe_move_check_syntax(move)                
-        elif settings[1]==1 and player_active==2:
-            move = input_with_quit("Podaj współrzędne do wstawienia znaku: ")
-            move = tic_tac_toe_move_check_syntax(move)                
-        elif settings[0]==2 and player_active==1:
+            move = tic_tac_toe_move_check_syntax(move)
+        elif player[player_active]["type"] == 2:
             move=get_random_ai_coordinates(game_progress)
-            time.sleep(0.2)
-        elif settings[1]==2 and player_active==2:
-            move=get_random_ai_coordinates(game_progress)
-            time.sleep(0.2)                
-        elif settings[0]==3 and player_active==1:
-            move=get_unbeatable_ai_coordinates(game_progress,'x')
-            time.sleep(0.2)  
-        elif settings[1]==3 and player_active==2:
-            move=get_unbeatable_ai_coordinates(game_progress,'o')
-            time.sleep(0.2)  
-        elif settings[0]==4 and player_active==1:
-            move=get_unbeatable_ai_coordinates_hard(game_progress,'x')
-            time.sleep(0.2)  
-        elif settings[1]==4 and player_active==2:
-            move=get_unbeatable_ai_coordinates_hard(game_progress,'o')
-            time.sleep(0.2)  
+        elif player[player_active]["type"] == 3:
+            move=get_unbeatable_ai_coordinates(game_progress, player[player_active]["sign"])
+        elif player[player_active]["type"] == 4:
+            move=get_unbeatable_ai_coordinates_hard(game_progress, player[player_active]["sign"])
 
+        time.sleep(0.5)
 
         while move == False:
 
@@ -192,108 +178,72 @@ while True:
                 11: "Podaj współrzędne do wstawienia znaku",
                 12: ""
             }
+            tic_tac_toe_animations(text_lines, game_progress, animations_settings)
 
-        if settings[0]==1 and player_active==1:
             move = input_with_quit("Podaj współrzędne do wstawienia znaku: ")
-            move = tic_tac_toe_move_check_syntax(move)                
-        elif settings[1]==1 and player_active==2:
-            move = input_with_quit("Podaj współrzędne do wstawienia znaku: ")
-            move = tic_tac_toe_move_check_syntax(move)                
-        elif settings[0]==2 and player_active==1:
-            move=get_random_ai_coordinates(game_progress)
-            time.sleep(0.2)
-        elif settings[1]==2 and player_active==2:
-            move=get_random_ai_coordinates(game_progress)
-            time.sleep(0.2)                
-        elif settings[0]==3 and player_active==1:
-            move=get_unbeatable_ai_coordinates(game_progress,'x')
-            time.sleep(0.2)  
-        elif settings[1]==3 and player_active==2:
-            move=get_unbeatable_ai_coordinates(game_progress,'o')
-            time.sleep(0.2)  
-        elif settings[0]==4 and player_active==1:
-            move=get_unbeatable_ai_coordinates_hard(game_progress,'x')
-            time.sleep(0.2)  
-        elif settings[1]==4 and player_active==2:
-            move=get_unbeatable_ai_coordinates_hard(game_progress,'o')
-            time.sleep(0.2)  
-
-
+            time.sleep(0.5)
+            move = tic_tac_toe_move_check_syntax(move)
 
         move = tic_tac_toe_move_check_availability(move, game_progress)
 
         while move == False:
 
-            text_lines = {
-                0: "",
-                1: "Ruch wykonuje:",
-                2: player[player_active]["name"],
-                3: "",
-                4: "Wstawiany znak:",
-                5: graphic_sign[player[player_active]["sign"]][0],
-                6: graphic_sign[player[player_active]["sign"]][1],
-                7: graphic_sign[player[player_active]["sign"]][2],
-                8: graphic_sign[player[player_active]["sign"]][3],
-                9: graphic_sign[player[player_active]["sign"]][4],
-                10: "",
-                11: "Wskazane pole jest już zajęte!",
-                12: ""
-            }
-            animations_settings = {
-                "border": False,
-                "lines": False,
-                "game_progress": False,
-                "coordinates": False,
-                "text_title": False,
-                "text_lines": [11],
-                "text_footer": False
-            }
-            tic_tac_toe_animations(text_lines, game_progress, animations_settings)
+            if player[player_active]["type"] == 1:
+                text_lines = {
+                    0: "",
+                    1: "Ruch wykonuje:",
+                    2: player[player_active]["name"],
+                    3: "",
+                    4: "Wstawiany znak:",
+                    5: graphic_sign[player[player_active]["sign"]][0],
+                    6: graphic_sign[player[player_active]["sign"]][1],
+                    7: graphic_sign[player[player_active]["sign"]][2],
+                    8: graphic_sign[player[player_active]["sign"]][3],
+                    9: graphic_sign[player[player_active]["sign"]][4],
+                    10: "",
+                    11: "Wskazane pole jest już zajęte!",
+                    12: ""
+                }
+                animations_settings = {
+                    "border": False,
+                    "lines": False,
+                    "game_progress": False,
+                    "coordinates": False,
+                    "text_title": False,
+                    "text_lines": [11],
+                    "text_footer": False
+                }
+                tic_tac_toe_animations(text_lines, game_progress, animations_settings)
 
-            time.sleep(2)
+                time.sleep(2)
 
-            text_lines = {
-                0: "",
-                1: "Ruch wykonuje:",
-                2: player[player_active]["name"],
-                3: "",
-                4: "Wstawiany znak:",
-                5: graphic_sign[player[player_active]["sign"]][0],
-                6: graphic_sign[player[player_active]["sign"]][1],
-                7: graphic_sign[player[player_active]["sign"]][2],
-                8: graphic_sign[player[player_active]["sign"]][3],
-                9: graphic_sign[player[player_active]["sign"]][4],
-                10: "",
-                11: "Podaj współrzędne do wstawienia znaku",
-                12: ""
-            }
-            tic_tac_toe_animations(text_lines, game_progress, animations_settings)
+                text_lines = {
+                    0: "",
+                    1: "Ruch wykonuje:",
+                    2: player[player_active]["name"],
+                    3: "",
+                    4: "Wstawiany znak:",
+                    5: graphic_sign[player[player_active]["sign"]][0],
+                    6: graphic_sign[player[player_active]["sign"]][1],
+                    7: graphic_sign[player[player_active]["sign"]][2],
+                    8: graphic_sign[player[player_active]["sign"]][3],
+                    9: graphic_sign[player[player_active]["sign"]][4],
+                    10: "",
+                    11: "Podaj współrzędne do wstawienia znaku",
+                    12: ""
+                }
+                tic_tac_toe_animations(text_lines, game_progress, animations_settings)
 
-        if settings[0]==1 and player_active==1:
-            move = input_with_quit("Podaj współrzędne do wstawienia znaku: ")
-            move = tic_tac_toe_move_check_syntax(move)                
-        elif settings[1]==1 and player_active==2:
-            move = input_with_quit("Podaj współrzędne do wstawienia znaku: ")
-            move = tic_tac_toe_move_check_syntax(move)                
-        elif settings[0]==2 and player_active==1:
-            move=get_random_ai_coordinates(game_progress)
-            time.sleep(0.2)
-        elif settings[1]==2 and player_active==2:
-            move=get_random_ai_coordinates(game_progress)
-            time.sleep(0.2)                
-        elif settings[0]==3 and player_active==1:
-            move=get_unbeatable_ai_coordinates(game_progress,'x')
-            time.sleep(0.2)  
-        elif settings[1]==3 and player_active==2:
-            move=get_unbeatable_ai_coordinates(game_progress,'o')
-            time.sleep(0.2)  
-        elif settings[0]==4 and player_active==1:
-            move=get_unbeatable_ai_coordinates_hard(game_progress,'x')
-            time.sleep(0.2)  
-        elif settings[1]==4 and player_active==2:
-            move=get_unbeatable_ai_coordinates_hard(game_progress,'o')
-            time.sleep(0.2)  
+                move = input_with_quit("Podaj współrzędne do wstawienia znaku: ")
+                time.sleep(0.5)
+                move = tic_tac_toe_move_check_syntax(move)
 
+            elif player[player_active]["type"] == 2:
+                move=get_random_ai_coordinates(game_progress)
+            elif player[player_active]["type"] == 3:
+                move=get_unbeatable_ai_coordinates(game_progress, player[player_active]["sign"])
+            elif player[player_active]["type"] == 4:
+                move=get_unbeatable_ai_coordinates_hard(game_progress, player[player_active]["sign"])
 
             move = tic_tac_toe_move_check_availability(move, game_progress)
 
@@ -328,7 +278,7 @@ while True:
         result = tic_tac_toe_move_check_result(game_progress)
 
         if result == "draw":
-            time.sleep(1)
+            time.sleep(0.5)
 
             text_lines = {
                 0: "",
@@ -356,7 +306,7 @@ while True:
             }
             tic_tac_toe_animations(text_lines, game_progress, animations_settings)
 
-            time.sleep(2)
+            time.sleep(1.5)
 
         elif isinstance(result, list):
             result_numbers = map(lambda x: x.replace("a", "1").replace("b", "2").replace("c", "3") , result)
@@ -424,7 +374,9 @@ while True:
             }
             tic_tac_toe_animations(text_lines, game_progress, animations_settings)
 
-            time.sleep(2)
+            time.sleep(1.5)
 
         if player_active == 1: player_active = 2
         else: player_active = 1
+
+        time.sleep(0.5)
